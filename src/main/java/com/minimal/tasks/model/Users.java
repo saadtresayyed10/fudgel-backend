@@ -1,12 +1,16 @@
 package com.minimal.tasks.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.util.List;
 
-@Data
+
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "users")
 public class Users {
     @Id
@@ -15,7 +19,4 @@ public class Users {
     private String firstname;
     private String lastname;
     private String email;
-
-    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL)
-    private List<Tasks> tasks;
 }
