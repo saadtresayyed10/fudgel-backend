@@ -4,3 +4,5 @@ import { addTaskToUser } from "../controller/task.controller.js";
 const taskRouter = Router();
 
 taskRouter.post("/", addTaskToUser);
+
+export default taskRouter;

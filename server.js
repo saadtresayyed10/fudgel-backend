@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import userRouter from "./routes/user.route.js";
+import taskRouter from "./routes/task.route.js";
 
 dotenv.config();
 const app = express();
@@ -15,5 +16,6 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/users", userRouter);
+app.use("/api/tasks", taskRouter);
 
 app.listen(PORT, console.log(`Server up on Port: ${PORT}`));
