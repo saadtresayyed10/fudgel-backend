@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send(`<h1 textalign="center">Server Running Successfully!</h1>`);
+  res.send(`<h1>Server Running Successfully!</h1>`);
 });
 
 app.use("/api/users", userRouter);
