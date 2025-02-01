@@ -26,7 +26,7 @@ export const addTaskToUser = async (req, res) => {
   }
 };
 
-//Get all tasks
+//Get all tasks for a specific user
 export const getAllTasksForAUser = async (req, res) => {
   try {
     const { userId } = req.params;
@@ -36,6 +36,42 @@ export const getAllTasksForAUser = async (req, res) => {
       },
     });
     res.json({ data: tasks }).status(200);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//Update a Task
+export const updateTask = async (req, res) => {
+  try {
+    const { taskId } = req.params;
+    const { taskTitle, taskDescription } = req.body;
+    const taskData = { taskTitle, taskDescription };
+
+    const task = await taskClient.update({
+      where: {
+        taskId: taskId,
+      },
+      data: taskData,
+    });
+
+    res.status(200).json({ message: "Task updated successfully", data: task });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//Delete a Task
+export const deleteTask = async (req, res) => {
+  try {
+    const { taskId } = req.params;
+    const task = await taskClient.delete({
+      where: {
+        taskId: taskId,
+      },
+    });
+
+    res.status(200).json({ message: "Task deleted successfully" });
   } catch (error) {
     console.log(error);
   }
