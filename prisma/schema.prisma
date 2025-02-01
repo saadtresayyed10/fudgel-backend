@@ -14,10 +14,11 @@ datasource db {
 }
 
 model users {
-  userId   String  @id
-  username String
-  email    String  @unique
-  task     tasks[]
+  userId    String  @id
+  firstName String
+  lastName  String
+  email     String  @unique
+  task      tasks[]
 }
 
 model tasks {
