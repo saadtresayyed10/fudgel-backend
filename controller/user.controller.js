@@ -5,7 +5,8 @@ const userClient = new PrismaClient().users;
 //Adding user to db
 export const addUser = async (req, res) => {
   try {
-    const userData = req.body;
+    const { userId, username, email } = req.body;
+    const userData = { userId, username, email };
     const user = await userClient.create({
       data: userData,
     });
