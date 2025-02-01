@@ -16,3 +16,14 @@ export const addUser = async (req, res) => {
     console.log(`Error adding user: ${error}`);
   }
 };
+
+//Fetch all the users from db
+export const getAllUsers = async (req, res) => {
+  try {
+    const users = await userClient.findMany();
+
+    res.json({ message: "All users are fetched", data: users });
+  } catch (error) {
+    console.log(`Error adding user: ${error}`);
+  }
+};
