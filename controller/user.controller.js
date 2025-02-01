@@ -11,7 +11,7 @@ export const addUser = async (req, res) => {
       data: userData,
     });
 
-    res.json({ message: "User added successfully", data: user }).status(201);
+    res.status(201).json({ message: "User added successfully", data: user });
   } catch (error) {
     console.log(`Error adding user: ${error}`);
   }
@@ -22,7 +22,7 @@ export const getAllUsers = async (req, res) => {
   try {
     const users = await userClient.findMany();
 
-    res.json({ message: "All users are fetched", data: users });
+    res.status(200).json({ message: "All users are fetched", data: users });
   } catch (error) {
     console.log(`Error adding user: ${error}`);
   }

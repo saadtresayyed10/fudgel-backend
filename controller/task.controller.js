@@ -8,6 +8,12 @@ export const addTaskToUser = async (req, res) => {
     const { taskTitle, taskDescription, userId } = req.body;
     const taskData = { taskTitle, taskDescription, userId };
 
+    if (!taskData.taskTitle || !taskData.taskDescription) {
+      res
+        .status(400)
+        .json({ error: "Title and Description fields cannot be left emptied" });
+    }
+
     const task = await taskClient.create({
       data: {
         taskTitle: taskData.taskTitle,
@@ -20,7 +26,7 @@ export const addTaskToUser = async (req, res) => {
       },
     });
 
-    res.json({ message: "Task added successfully", data: task }).status(201);
+    res.status(201).json({ message: "Task added successfully", data: task });
   } catch (error) {
     console.log(`Error adding task: ${error}`);
   }
@@ -35,7 +41,7 @@ export const getAllTasksForAUser = async (req, res) => {
         userId: userId,
       },
     });
-    res.json({ data: tasks }).status(200);
+    res.status(200).json({ data: tasks });
   } catch (error) {
     console.log(error);
   }
