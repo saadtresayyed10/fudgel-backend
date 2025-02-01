@@ -27,9 +27,9 @@ export const addTaskToUser = async (req, res) => {
 };
 
 //Get all tasks
-export const getAllTasks = async (req, res) => {
+export const getAllTasksForAUser = async (req, res) => {
   try {
-    const { userId } = req.params.id;
+    const { userId } = req.params;
     const tasks = await taskClient.findMany({
       where: {
         userId: userId,

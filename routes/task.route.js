@@ -1,9 +1,12 @@
 import { Router } from "express";
-import { addTaskToUser, getAllTasks } from "../controller/task.controller.js";
+import {
+  addTaskToUser,
+  getAllTasksForAUser,
+} from "../controller/task.controller.js";
 
 const taskRouter = Router();
 
 taskRouter.post("/", addTaskToUser);
-taskRouter.get("/", getAllTasks);
+taskRouter.get("/:userId", getAllTasksForAUser);
 
 export default taskRouter;
