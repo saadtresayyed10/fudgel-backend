@@ -10,7 +10,7 @@ export const addUser = async (req, res) => {
       data: userData,
     });
 
-    res.json({ data: user, message: "User added successfully" }).status(201);
+    res.json({ message: "User added successfully", data: user }).status(201);
   } catch (error) {
     console.log(`Error adding user: ${error}`);
   }
