@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
+import userRouter from "./routes/user.route.js";
 
 dotenv.config();
 const app = express();
@@ -12,5 +13,7 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send(`<h1 textalign="center">Server Running Successfully!</h1>`);
 });
+
+app.use("/api/users", userRouter);
 
 app.listen(PORT, console.log(`Server up on Port: ${PORT}`));
